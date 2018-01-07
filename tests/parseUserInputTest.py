@@ -1,5 +1,4 @@
 import unittest
-import string
 
 from src.parseInput import parse_user_input, IncorrectInputException
 
@@ -32,6 +31,7 @@ class ParseUserInputTestCase(unittest.TestCase):
             "MA. Z": ["MA.", "Z"],
             "  MA. Z  ": ["MA.", "Z"],
             "MA. Z_A  ": ["MA.", "Z_A"],
+            "MA. Ę_Ą": ["MA.", "Ę_Ą"],
         }
         for correct_input,output in correct_inputs_outputs.items():
             self.assertListEqual(parse_user_input(correct_input), output)

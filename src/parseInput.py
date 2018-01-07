@@ -1,6 +1,6 @@
 
 
-import re
+import regex
 
 
 class IncorrectInputException(Exception):
@@ -11,13 +11,20 @@ class IncorrectInputException(Exception):
 # 1: available letters: ex: ZRKLIW_
 def parse_user_input(user_input):
     user_input = str(user_input).upper().strip()
-    regex = "[.*+]?([A-Z][.*+]*[A-Z]*)+[.*+]? [A-Z_]{1,7}"
-    prog = re.compile(regex)
-    result = prog.match(user_input)
+    pattern = "[.*+]?([A-Ż][.*+]*[A-Ż]*)+[.*+]? [A-Ż_]{1,7}"
+    result = regex.fullmatch(pattern, user_input, regex.UNICODE)
 
-    if result is None or len(result.group()) != len(user_input):
-        raise IncorrectInputException(user_input)
+    if result is None: raise IncorrectInputException(user_input)
 
     elements = str(user_input).split(" ")
-
     return elements
+
+
+def read_words_from_dictionary():
+    words = []
+    with open("../slowa.txt", "r+") as file:
+        for line in file:
+            words.append(line)
+
+    print("Read file with " + str(len(words)) + " words")
+    return words
