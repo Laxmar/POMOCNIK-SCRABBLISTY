@@ -49,6 +49,11 @@ class FilterUsingRegexTestCase(unittest.TestCase):
         self.assertIsInstance(filtered_words, list)
         self.assertEqual(["AA"], filtered_words)
 
+    def test_no_match(self):
+        filtered_words = filter_using_regex(["AA"], "B[A]")
+        self.assertIsInstance(filtered_words, list)
+        self.assertEqual([], filtered_words)
+
     def test_plus(self):
         filtered_words = filter_using_regex(["AA"], "A[A]+")
         self.assertEqual(["AA"], filtered_words)

@@ -2,8 +2,9 @@
 #
 #   1. Parse user input
 #   2. Load dictionary with polish words
-#   3. Finding matching words: sorted by points
-#
+#   3. Find matching words
+#   4. Calculate points for words
+#   5. Return sorted by points list of words
 #
 
 from src.parseInput import parse_user_input, IncorrectInputException, read_words_from_dictionary
