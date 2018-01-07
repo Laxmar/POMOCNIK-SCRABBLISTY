@@ -8,6 +8,7 @@ class ReadFileTestCase(unittest.TestCase):
         result = read_words_from_dictionary()
         self.assertIsInstance(result, list)
         self.assertNotEqual (len(result), 0)
+        self.assertEqual(result[0], "AA")
 
 
 if __name__ == '__main__':

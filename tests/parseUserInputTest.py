@@ -2,6 +2,7 @@ import unittest
 
 from src.parseInput import parse_user_input, IncorrectInputException
 
+
 class ParseUserInputTestCase(unittest.TestCase):
 
     correctInput = "*M..A* ZRKLWI"
