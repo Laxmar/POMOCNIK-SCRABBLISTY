@@ -29,6 +29,7 @@ class ParseUserInputTestCase(unittest.TestCase):
             "*M..AA* Z": ["*M..AA*", "Z"],
             "*M..A.A* Z": ["*M..A.A*", "Z"],
             "M..A Z": ["M..A", "Z"],
+
             "MA. Z": ["MA.", "Z"],
             "  MA. Z  ": ["MA.", "Z"],
             "MA. Z_A  ": ["MA.", "Z_A"],
