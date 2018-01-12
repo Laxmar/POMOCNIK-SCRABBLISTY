@@ -1,6 +1,6 @@
 import unittest
 
-from src.parseInput import read_words_from_dictionary
+from src.input import read_words_from_dictionary
 from src.solver import find_words
 
 

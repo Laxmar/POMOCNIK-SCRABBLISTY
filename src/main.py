@@ -7,7 +7,7 @@
 #   5. Return sorted by points list of words
 #
 
-from src.parseInput import parse_user_input, IncorrectInputException, read_words_from_dictionary
+from src.input import parse_user_input, IncorrectInputException, read_words_from_dictionary
 from src.solver import find_words
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 import regex
 
-from src.parseInput import parse_user_input
+from src.input import parse_user_input
 
 
 def create_pattern(parsed_input):

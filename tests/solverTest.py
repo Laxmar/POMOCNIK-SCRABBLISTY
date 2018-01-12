@@ -1,6 +1,6 @@
 import unittest
 
-from src.parseInput import read_words_from_dictionary
+from src.input import read_words_from_dictionary
 from src.solver import create_pattern, filter_using_regex, filter_word_max_length, match_words
 
 

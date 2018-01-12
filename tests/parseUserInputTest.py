@@ -1,6 +1,6 @@
 import unittest
 
-from src.parseInput import parse_user_input, IncorrectInputException
+from src.input import parse_user_input, IncorrectInputException
 
 
 class ParseUserInputTestCase(unittest.TestCase):
