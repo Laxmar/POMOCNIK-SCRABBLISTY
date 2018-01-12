@@ -1,6 +1,7 @@
 
 
 import regex
+import codecs
 
 
 class IncorrectInputException(Exception):
@@ -22,9 +23,10 @@ def parse_user_input(user_input):
 
 def read_words_from_dictionary():
     words = []
-    with open("../slowa.txt", "r+") as file:
+    with open("../slowa.txt", "r", encoding="utf-8") as file:
         for line in file:
-            words.append(line.upper().strip("\n"))
+            word = line.upper().strip("\n")
+            words.append(word)
 
     print("Read file with " + str(len(words)) + " words")
     return words

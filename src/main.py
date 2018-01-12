@@ -8,6 +8,7 @@
 #
 
 from src.parseInput import parse_user_input, IncorrectInputException, read_words_from_dictionary
+from src.solver import find_words
 
 if __name__ == '__main__':
     print("Starting program")
@@ -19,7 +20,8 @@ if __name__ == '__main__':
         if user_input is "q": break
 
         try:
-            res = parse_user_input(user_input)
-            print(res)
+            found_words = find_words(user_input, words)
+            print(found_words)
+
         except IncorrectInputException:
             print("Incorrect input please try again")

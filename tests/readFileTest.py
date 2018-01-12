@@ -10,6 +10,12 @@ class ReadFileTestCase(unittest.TestCase):
         self.assertNotEqual (len(result), 0)
         self.assertEqual(result[0], "AA")
 
+    def test_polish_letters(self):
+        result = read_words_from_dictionary()
+        self.assertIsInstance(result, list)
+        self.assertNotEqual (len(result), 0)
+        self.assertTrue(result.__contains__("AŻ"))
+
 
 if __name__ == '__main__':
     unittest.main()

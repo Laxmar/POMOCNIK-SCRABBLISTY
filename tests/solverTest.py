@@ -65,6 +65,10 @@ class FilterUsingRegexTestCase(unittest.TestCase):
         filtered_words = filter_using_regex(["ĄA"], "Ą[A]*")
         self.assertEqual(["ĄA"], filtered_words)
 
+    def test_polish_letters2(self):
+        filtered_words = filter_using_regex(["AA","AŻ", "AD", "AZ"], "A[ABCDŻ]")
+        self.assertEqual(["AA", "AŻ", "AD"], filtered_words)
+
     def test_three_words(self):
         filtered_words = filter_using_regex(["BAK", "BAR", "RYBAK"], "B[ARKŻ]+")
         self.assertEqual(["BAK", "BAR"], filtered_words)
@@ -139,6 +143,12 @@ class MatchWordsTestCase(unittest.TestCase):
         words = ["BAK", "BAR", "RYBAK", "ŻABA", "JAREK"]
         matched_words = match_words(words, ["R", "K", "Y","_", "A"], ["A", "B"])
         self.assertEqual(["BAK", "BAR", "RYBAK", "ŻABA"], matched_words)
+
+    def test_polish_letters(self):
+        matched_words = match_words(["AA", "AŻ", "AD"], ["A", "B", "D", "Ż"], ["A"])
+        self.assertIsInstance(matched_words, list)
+        self.assertEqual(["AA", "AŻ", "AD"], matched_words)
+
 
 if __name__ == '__main__':
     unittest.main()

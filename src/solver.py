@@ -1,5 +1,7 @@
 import regex
 
+from src.parseInput import parse_user_input
+
 
 def create_pattern(parsed_input):
     limits = str(parsed_input[0])
@@ -23,13 +25,12 @@ def filter_using_regex(words, pattern):
 
 
 def filter_word_max_length(words, letters_number_on_board, player_letters_number):
-    #letters_number_on_board = list(filter(lambda ch: str(ch).isalpha(), regex.sub("\[.*]", "", pattern))).__len__()
     word_max_length = player_letters_number + letters_number_on_board
     filtered_words = list(filter(lambda word: len(word) <= word_max_length, words))
     return filtered_words
 
 
-def match_words(words, player_letters, letters_on_board):
+def match_words(words: list, player_letters: list, letters_on_board: list):
     available_letters = player_letters + letters_on_board
     blanks_number = len(list(filter(lambda letter: letter == "_", player_letters)))
     matched_words = []
@@ -42,3 +43,16 @@ def match_words(words, player_letters, letters_on_board):
     return matched_words
 
 
+def find_words(user_input: str, dictionary_words: list):
+    print("Finding words... ")
+    parsed_input = parse_user_input(user_input)
+    pattern = create_pattern(parsed_input)
+
+    letters_on_board = list(filter(lambda letter: str(letter).isalpha(), str(user_input).split(" ")[0]))
+    players_letters = list(filter(lambda letter: str(letter).isalpha() or letter == "_", str(user_input).split(" ")[1]))
+
+    filtered_words = filter_using_regex(dictionary_words, pattern)
+    filtered_words = filter_word_max_length(filtered_words, len(letters_on_board), len(players_letters))
+    matched_words = match_words(filtered_words, players_letters, letters_on_board)
+
+    return matched_words
