@@ -1,5 +1,4 @@
-
-
+import itertools
 import regex
 import codecs
 
@@ -30,3 +29,20 @@ def read_words_from_dictionary():
 
     print("Read file with " + str(len(words)) + " words")
     return words
+
+
+def create_letter_score_dict():
+    score_table = [
+        (1, "AEINORSWZ"),
+        (2, "CDKLMPTY"),
+        (3, "BGHJŁU"),
+        (5, "ĄĘFÓŚŻ"),
+        (6, "Ć"),
+        (7, "Ń"),
+        (9, "Ź"),
+    ]
+    letter_score_dict = dict()
+    for e in score_table:
+        temp = dict(zip( list(e[1]), list(itertools.repeat(e[0], len(e[1])))))
+        letter_score_dict.update(temp)
+    return letter_score_dict
